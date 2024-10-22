@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/main.js"></script>
+</head>
+<body>
+    <h2>Cotizador de integraciones: Este programa genera un presupuesto tabulado en la consola</h2>
+    <h3>Comentarios: Solo se puede agregar 1 sola integracion de ERP pero podés agregar todos los marketplaces de la lista</h3>
+    <h4>Además podés agregar 1 solo desarrollo custom, ingresando la cantidad de horas necesarias para el desarrollo</h4>
+
+    <header class="container-fluid">
+        <h1 class="fs-1">Generador de presupuestos de integraciones</h1>
+    </header>
+    <main class="container-fluid">
+        <form class="container">
+            
+            <label for="txtValor1" class="form-label fs-4">Ingresar el numero del siguiente listado:</label>
+            <h6>1 - API</h6>
+            <h6>2 - TANGO</h6>
+            <h6>3 - CONTABILIUM</h6>
+            <h6>4 - TACTICA SOFTWARE</h6>
+            <p></p>
+            <input type="number" id="txtValor1" min="1" placeholder="Numero" class="form-control w-25" required />
+            
+            <p></p>
+            <p></p>
+            <p></p>
+
+            <section>
+                <label for="checkBox1" class="form-check-label fs-6">Mercado Libre</label>
+                <input type="checkbox" id="checkBox1" class="form-check-input" />
+            </section>
+
+            <section>
+                <label for="checkBox2" class="form-check-label fs-6">Provincia Compras</label>
+                <input type="checkbox" id="checkBox2" class="form-check-input" />
+            </section>
+
+            <section>
+                <label for="checkBox3" class="form-check-label fs-6">Fravega</label>
+                <input type="checkbox" id="checkBox3" class="form-check-input" />
+            </section>
+
+            <section>
+                <label for="checkBox4" class="form-check-label fs-6">Tienda BNA +</label>
+                <input type="checkbox" id="checkBox4" class="form-check-input" />
+            </section>
+
+            <section>
+                <label for="checkBox5" class="form-check-label fs-6">Macro Premia</label>
+                <input type="checkbox" id="checkBox5" class="form-check-input" />
+            </section>
+            <p></p>
+            <p></p>
+
+            <section>
+                <label for="checkBox6" class="form-check-label fs-6">Desarrollo Custom</label>
+                <input type="checkbox" id="checkBox6" class="form-check-input" />
+            </section>
+            <input type="number" id="txtValor2" min="1" placeholder="Numero" class="form-control w-25" required />
+            <p></p>
+            <p></p>
+            <p></p>
+            
+            <section>
+                <article>
+                    <input type="button" value="Calcular presupuesto" id="btn1" class="btn btn-primary fs-4" />
+                    <input type="button" value="Guardar presupuesto" id="btn2" class="btn btn-secondary fs-4" />
+                </article>
+                <article>
+                    <input type="button" value="Ver ultimo presupuesto guardado" id="btn3" class="btn btn-info fs-4" />
+                </article>
+                <article>
+                    <input type="button" value="Ver todos los presupuestos guardados" id="btn4"
+                        class="btn btn-secondary fs-4" />
+                </article>
+            </section>
+            <div id="divMostrarResultado" class="fs-5"></div>
+        </form>
+    </main>
+
+
+</body>
+</html>
