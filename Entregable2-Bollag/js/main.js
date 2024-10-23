@@ -85,8 +85,6 @@ let integracionesCanales = [
 
 let integracionesPresupuestadas = [];
 
-let integracionesCanalesPresupuestados = [];
-
 function userInterfaceCalculadorPresupuestos() {
     let erp = document.getElementById("erps").value;
     console.log(erp);
@@ -95,12 +93,17 @@ function userInterfaceCalculadorPresupuestos() {
     let fravega = document.getElementById("checkBox3").checked;
     let tiendaBna = document.getElementById("checkBox4").checked;
     let macro = document.getElementById("checkBox5").checked;
-    
-    
-    
-    let integracionERPFiltrada = ERPs.find(element => element.nombre == erp);
-    console.log(integracionERPFiltrada);
 
+    let validacionCustom = document.getElementById("checkBox6").checked;
+    let horasCustom = parseFloat(document.getElementById("txtValor1").value);
+    
+    
+    
+    
+    let integracionERPFiltrada = ERPs.find(element => element.nombre == erp); //me devuelve el obojeto ERP elegido
+    integracionesPresupuestadas.push(integracionERPFiltrada); //lo agrego al array
+    
+    console.log(integracionesPresupuestadas);
     
     //Hasta acá solamente se agregó la integración ERP al array del presupuesto.
 
@@ -118,7 +121,7 @@ function userInterfaceCalculadorPresupuestos() {
             costoImplementacion: costoImplementacion
         }
         acumularCostosPresupuestados(integracionCosteada.costoImplementacion)
-        integracionesCanalesPresupuestados.push(integracionCosteada)
+        integracionesPresupuestadas.push(integracionCosteada)
     }
     if (bapro == true) {
         let objetoBapro = integracionesCanales.find(it => it.id == 7);
@@ -130,7 +133,7 @@ function userInterfaceCalculadorPresupuestos() {
             costoImplementacion: costoImplementacion
         }
         acumularCostosPresupuestados(integracionCosteada.costoImplementacion)
-        integracionesCanalesPresupuestados.push(integracionCosteada)
+        integracionesPresupuestadas.push(integracionCosteada)
     }
     if (fravega == true) {
         let objetoFravega = integracionesCanales.find(it => it.id == 8);
@@ -142,7 +145,7 @@ function userInterfaceCalculadorPresupuestos() {
             costoImplementacion: costoImplementacion
         }
         acumularCostosPresupuestados(integracionCosteada.costoImplementacion)
-        integracionesCanalesPresupuestados.push(integracionCosteada)
+        integracionesPresupuestadas.push(integracionCosteada)
     }
     if (tiendaBna == true) {
         let objetoBNA = integracionesCanales.find(it => it.id == 9);
@@ -154,7 +157,7 @@ function userInterfaceCalculadorPresupuestos() {
             costoImplementacion: costoImplementacion
         }
         acumularCostosPresupuestados(integracionCosteada.costoImplementacion)
-        integracionesCanalesPresupuestados.push(integracionCosteada)
+        integracionesPresupuestadas.push(integracionCosteada)
     }
     if (macro == true) {
         let objetoMacro = integracionesCanales.find(it => it.id == 10);
@@ -166,10 +169,10 @@ function userInterfaceCalculadorPresupuestos() {
             costoImplementacion: costoImplementacion
         }
         acumularCostosPresupuestados(integracionCosteada.costoImplementacion)
-        integracionesCanalesPresupuestados.push(integracionCosteada)
+        integracionesPresupuestadas.push(integracionCosteada)
     }
-    
-    console.log(integracionesCanalesPresupuestados);
+      
+    console.log(integracionesPresupuestadas);
     
     return console.log(totalPresupuestado)
 

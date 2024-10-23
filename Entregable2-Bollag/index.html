@@ -15,17 +15,9 @@
     </header>
     <main class="container-fluid">
         <form class="container">
-            
-            <label for="txtValor1" class="form-label fs-4">Ingresar el numero del siguiente listado:</label>
-            <h6>1 - API</h6>
-            <h6>2 - TANGO</h6>
-            <h6>3 - CONTABILIUM</h6>
-            <h6>4 - TACTICA SOFTWARE</h6>
-            <p></p>
-            <input type="number" id="txtValor1" min="1" placeholder="Numero" class="form-control w-25" required />
             <p></p>
             <p></p>
-            <datalist id="erps">
+            <datalist id="integraciones">
                 <option value="API"></option>
                 <option value="TANGO"></option>
                 <option value="CONTABILIUM"></option>
@@ -33,7 +25,7 @@
             </datalist>
             <label>
                 ¿Cual integración del ERP quieres agregar al presupuesto?
-                <input list="erps" name="erps">
+                <input id="erps" list="integraciones" name="erps">
             </label>
 
 
@@ -72,7 +64,8 @@
                 <label for="checkBox6" class="form-check-label fs-6">Desarrollo Custom</label>
                 <input type="checkbox" id="checkBox6" class="form-check-input" />
             </section>
-            <input type="number" id="txtValor2" min="1" placeholder="Numero" class="form-control w-25" required />
+            <input type="number" id="txtValor1" min="1" placeholder="Numero" class="form-control w-25" required />
+            
             <p></p>
             <p></p>
             <p></p>
@@ -93,6 +86,7 @@
             <div id="divMostrarResultado" class="fs-5"></div>
         </form>
     </main>
+    <script defer src="./js/main.js"></script>
 </body>
-<script defer src="./js/main.js"></script>
+
 </html>
