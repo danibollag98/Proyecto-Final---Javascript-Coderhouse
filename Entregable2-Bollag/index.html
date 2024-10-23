@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./js/main.js"></script>
 </head>
 <body>
     <h2>Cotizador de integraciones: Este programa genera un presupuesto tabulado en la consola</h2>
@@ -24,7 +23,20 @@
             <h6>4 - TACTICA SOFTWARE</h6>
             <p></p>
             <input type="number" id="txtValor1" min="1" placeholder="Numero" class="form-control w-25" required />
-            
+            <p></p>
+            <p></p>
+            <datalist id="erps">
+                <option value="API"></option>
+                <option value="TANGO"></option>
+                <option value="CONTABILIUM"></option>
+                <option value="TACTICA SOFTWARE"></option>
+            </datalist>
+            <label>
+                ¿Cual integración del ERP quieres agregar al presupuesto?
+                <input list="erps" name="erps">
+            </label>
+
+
             <p></p>
             <p></p>
             <p></p>
@@ -81,7 +93,6 @@
             <div id="divMostrarResultado" class="fs-5"></div>
         </form>
     </main>
-
-
 </body>
+<script defer src="./js/main.js"></script>
 </html>

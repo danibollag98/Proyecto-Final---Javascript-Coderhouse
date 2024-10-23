@@ -3,25 +3,7 @@
 // presupuesto, escribiendo el numero correcto del listado: \n1 = API \n2 =
 // Tango \n3 = Contabilium  \n4 = Tactica Software");
 
-const integracionesERPconObjetosYArrays = [
-    {
-        id: 1, //ID unico dentro del array
-        nombre: "API", //nombre de la integracion
-        tiempo: 5, //medidos en horas
-    }, {
-        id: 2, //ID unico dentro del array
-        nombre: "TANGO", //nombre de la integracion
-        tiempo: 9, //medidos en horas
-    }, {
-        id: 3, //ID unico dentro del array
-        nombre: "CONTABILIUM", //nombre de la integracion
-        tiempo: 7, //medidos en horas
-    }, {
-        id: 4, //ID unico dentro del array
-        nombre: "TACTICA SOFTWARE", //nombre de la integracion
-        tiempo: 10, //medidos en horas
-    }
-];
+
 
 let costoPorHoraEnUSD = 80; //  80 U$S/hora
 let IVA = 1.21; //multiplicador por el IVA
@@ -42,7 +24,25 @@ function calcularCostoImplementacion(tiempoImplementacion) {
     return costoImplementacion
 }
 
-let integracionesPresupuestadas = [];
+let ERPs = [
+    {
+        id: 1, //ID unico dentro del array
+        nombre: "API", //nombre de la integracion
+        tiempo: 5, //medidos en horas
+    }, {
+        id: 2, //ID unico dentro del array
+        nombre: "TANGO", //nombre de la integracion
+        tiempo: 9, //medidos en horas
+    }, {
+        id: 3, //ID unico dentro del array
+        nombre: "CONTABILIUM", //nombre de la integracion
+        tiempo: 7, //medidos en horas
+    }, {
+        id: 4, //ID unico dentro del array
+        nombre: "TACTICA SOFTWARE", //nombre de la integracion
+        tiempo: 10, //medidos en horas
+    }
+];
 
 let integracionesCanales = [
     {
@@ -80,30 +80,36 @@ let integracionesCanales = [
 // "NO":         break;     default:         break; }
 // ---------------------------------USER-INTERFACE---------------------------------------------------------
 // Eventos UI:
+
+
+
+let integracionesPresupuestadas = [];
+
+let integracionesCanalesPresupuestados = [];
+
 function userInterfaceCalculadorPresupuestos() {
-    let erp = parseInt(document.getElementById("txtValor1").innerHTML);
+    let erp = document.getElementById("erps").value;
+    console.log(erp);
     let meli = document.getElementById("checkBox1").checked;
     let bapro = document.getElementById("checkBox2").checked;
     let fravega = document.getElementById("checkBox3").checked;
     let tiendaBna = document.getElementById("checkBox4").checked;
     let macro = document.getElementById("checkBox5").checked;
+    
+    
+    
+    let integracionERPFiltrada = ERPs.find(element => element.nombre == erp);
+    console.log(integracionERPFiltrada);
 
-    integracionesPresupuestadas = integracionesERPconObjetosYArrays.map(
-        function (it) {
-            if (it.id == erp && [1, 2, 3, 4].includes(erp)) {
-                calcularCostoImplementacion(it.tiempo)
-                return {id: it.id, nombre: it.nombre, tiempo: it.tiempo, costoImplementacion: costoImplementacion}
-            }
-        }
-    )
+    
     //Hasta acá solamente se agregó la integración ERP al array del presupuesto.
 
-    let integracionesCanalesPresupuestados = [];
+    
 
     //logica para agregar las integraciones checked al array para presupuestar
 
     if (meli == true) {
-        let objetoMeli = integracionesCanales.find(it => it.id == 1);
+        let objetoMeli = integracionesCanales.find(it => it.id == 6);
         calcularCostoImplementacion(objetoMeli.tiempo);
         let integracionCosteada = {
             id: objetoMeli.id,
@@ -111,56 +117,61 @@ function userInterfaceCalculadorPresupuestos() {
             tiempo: objetoMeli.tiempo,
             costoImplementacion: costoImplementacion
         }
+        acumularCostosPresupuestados(integracionCosteada.costoImplementacion)
         integracionesCanalesPresupuestados.push(integracionCosteada)
     }
     if (bapro == true) {
-        let objetoBapro = integracionesCanales.find(it => it.id == 2);
-        calcularCostoImplementacion(objetoMeli.tiempo);
+        let objetoBapro = integracionesCanales.find(it => it.id == 7);
+        calcularCostoImplementacion(objetoBapro.tiempo);
         let integracionCosteada = {
             id: objetoBapro.id,
             nombre: objetoBapro.nombre,
             tiempo: objetoBapro.tiempo,
             costoImplementacion: costoImplementacion
         }
+        acumularCostosPresupuestados(integracionCosteada.costoImplementacion)
         integracionesCanalesPresupuestados.push(integracionCosteada)
     }
     if (fravega == true) {
-        let objetoFravega = integracionesCanales.find(it => it.id == 3);
-        calcularCostoImplementacion(objetoMeli.tiempo);
+        let objetoFravega = integracionesCanales.find(it => it.id == 8);
+        calcularCostoImplementacion(objetoFravega.tiempo);
         let integracionCosteada = {
             id: objetoFravega.id,
             nombre: objetoFravega.nombre,
             tiempo: objetoFravega.tiempo,
             costoImplementacion: costoImplementacion
         }
+        acumularCostosPresupuestados(integracionCosteada.costoImplementacion)
         integracionesCanalesPresupuestados.push(integracionCosteada)
     }
     if (tiendaBna == true) {
-        let objetoBNA = integracionesCanales.find(it => it.id == 4);
-        calcularCostoImplementacion(objetoMeli.tiempo);
+        let objetoBNA = integracionesCanales.find(it => it.id == 9);
+        calcularCostoImplementacion(objetoBNA.tiempo);
         let integracionCosteada = {
             id: objetoBNA.id,
             nombre: objetoBNA.nombre,
             tiempo: objetoBNA.tiempo,
             costoImplementacion: costoImplementacion
         }
+        acumularCostosPresupuestados(integracionCosteada.costoImplementacion)
         integracionesCanalesPresupuestados.push(integracionCosteada)
     }
     if (macro == true) {
-        let objetoMacro = integracionesCanales.find(it => it.id == 5);
-        calcularCostoImplementacion(objetoMeli.tiempo);
+        let objetoMacro = integracionesCanales.find(it => it.id == 10);
+        calcularCostoImplementacion(objetoMacro.tiempo);
         let integracionCosteada = {
             id: objetoMacro.id,
             nombre: objetoMacro.nombre,
             tiempo: objetoMacro.tiempo,
             costoImplementacion: costoImplementacion
         }
+        acumularCostosPresupuestados(integracionCosteada.costoImplementacion)
         integracionesCanalesPresupuestados.push(integracionCosteada)
     }
-
-    integracionesPresupuestadas.concat(integracionesCanalesPresupuestados);
-
-    return console.log(integracionesPresupuestadas)
+    
+    console.log(integracionesCanalesPresupuestados);
+    
+    return console.log(totalPresupuestado)
 
 }
 
